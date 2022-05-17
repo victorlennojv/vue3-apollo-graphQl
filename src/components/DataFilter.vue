@@ -46,8 +46,8 @@
   })
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
   .center-flex {
-    @apply flex items-center justify-center;
+    @apply flex items-center justify-center w-96;
   }
 </style>

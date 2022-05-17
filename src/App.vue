@@ -11,11 +11,11 @@
 </template>
 
 <style lang="postcss">
-.center-flex {
-  @apply flex items-center justify-center
-}
+  .center-flex {
+    @apply flex items-center justify-center;
+  }
   body {
     font-family: 'RobotoRegular', sans-serif;
-    background-color: #f7f7f7;
+    background-color: #e4e4e4;
   }
 </style>

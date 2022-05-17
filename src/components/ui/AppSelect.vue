@@ -1,19 +1,14 @@
 <template>
   <div class="inline-block relative w-64">
     <select
-      v-if="props.options"
+      v-model="selec"
       class="block appearance-none w-full bg-gray-100 border border-gray-200 hover:border-gray-300 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+      @click="eventTest(selec)"
     >
+      <option v-if="!options.length" disabled selected>Not found</option>
       <option v-for="op in props.options" :key="op.name" class="text-gray-700">
         {{ op.name }}
       </option>
-    </select>
-
-    <select
-      v-else
-      class="block appearance-none w-full bg-gray-100 border border-gray-200 hover:border-gray-300 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-    >
-      <option class="text-gray-700">Nenhum dado encontrado</option>
     </select>
 
     <div
@@ -34,6 +29,11 @@
 
 <script setup>
   import { watchEffect } from '@vue/runtime-core'
+  import { ref } from 'vue'
+
+  const emit = defineEmits(['teste'])
+
+  const selec = ref('')
 
   const props = defineProps({
     options: {
@@ -41,9 +41,14 @@
     },
   })
 
+  function eventTest(teste) {
+    console.log('teste')
+    emit('teste', teste)
+  }
+
   watchEffect(() => {
     console.log(props.options)
   })
 </script>
 
-<style></style>
+<style lang="postcss" scoped></style>
