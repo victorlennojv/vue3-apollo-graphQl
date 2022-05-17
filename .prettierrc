@@ -1,0 +1,14 @@
+{
+  "bracketSpacing": true,
+  "disableLanguages": [],
+  "endOfLine": "lf",
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "vueIndentScriptAndStyle": true,
+  "jsxSingleQuote": true,
+  "[vue]": {
+    "jsxBracketSameLine": true
+  },
+  "jsxBracketSameLine": true
+}
