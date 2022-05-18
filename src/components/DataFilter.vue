@@ -25,13 +25,10 @@
 </template>
 
 <script setup>
-  import { computed, reactive, ref, watchEffect } from 'vue'
+  import { computed, ref } from 'vue'
   import { useQuery } from '@vue/apollo-composable'
   import AppSelect from './ui/AppSelect.vue'
-  import {
-    continentsQuery,
-    countriesByContinentQuery,
-  } from '../queries/countries'
+  import { continentsQuery } from '../queries/countries'
 
   const emit = defineEmits(['filter:submit'])
 

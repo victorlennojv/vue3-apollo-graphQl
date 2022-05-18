@@ -18,6 +18,7 @@ const countriesByContinentQuery = (continentCode) => {
       continent(code: ${continentCode}) {
         countries{
           name
+          code
         }
       }
     }
