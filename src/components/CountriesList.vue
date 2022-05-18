@@ -23,7 +23,7 @@
           :key="country.name"
           class="flex flex-col items-center p-8 transition-colors duration-200 transform cursor-pointer group hover:bg-blue-600 rounded-xl"
         >
-          <v-img
+          <img
             class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
             :src="`../assets/img/${country.code.toLowerCase()}.png`"
             alt=""
