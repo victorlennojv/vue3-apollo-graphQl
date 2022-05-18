@@ -1,19 +1,22 @@
 <template>
   <div class="center-flex">
-    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+    <div class="max-w-sm w-full rounded-lg bg-white overflow-hidden shadow-2xl">
       <div class="px-6 py-4">
         <div class="font-bold text-xs text-gray-400 mb-2">
           Filtrar dados de países
         </div>
-        <!-- Seletor Continentes -->
-        <app-select class="m-3" :options="continents" />
-        <app-select class="m-3" :options="continents" />
+        <!-- Continents selector -->
+        <app-select
+          class="m-3"
+          :options="continents.value"
+          @filter:selected="selectedContinet"
+        />
         <div class="m-2">
           <button
             class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-full active:bg-blue-600"
-            @click="fetchCountries"
+            @click="onSubmit"
           >
-            Button
+            Search
           </button>
         </div>
       </div>
@@ -23,27 +26,37 @@
 
 <script setup>
   import { computed, ref, watchEffect } from 'vue'
-  import gql from 'graphql-tag'
   import { useQuery } from '@vue/apollo-composable'
   import AppSelect from './ui/AppSelect.vue'
+  import {
+    continentsQuery,
+    countriesByContinentQuery,
+  } from '../queries/countries'
 
-  const items = ref([])
+  const emit = defineEmits(['filter:submit'])
 
-  let continents = ref([])
-  const ALL_CONTINENTS_QUERY = gql`
-    query {
-      continents {
-        name
-      }
-    }
-  `
-
-  const { result } = useQuery(ALL_CONTINENTS_QUERY)
-  continents = computed(() => result.value?.continents ?? [])
-
-  watchEffect(() => {
-    console.log(continents)
+  const continentToFindCountries = ref({
+    name: '',
+    code: '',
   })
+
+  const continents = ref([])
+
+  const { result } = useQuery(continentsQuery())
+  continents.value = computed(() => result.value?.continents ?? [])
+
+  const selectedContinet = (payload) => {
+    continentToFindCountries.value.name = payload.name
+    continentToFindCountries.value.code = payload.code
+  }
+
+  const onSubmit = () => {
+    emit('filter:submit', continentToFindCountries.value.code)
+  }
+
+  // watchEffect(() => {
+  //   console.log(continents)
+  // })
 </script>
 
 <style lang="postcss" scoped>

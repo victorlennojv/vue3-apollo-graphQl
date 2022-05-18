@@ -1,13 +1,25 @@
 <template>
   <div class="inline-block relative w-64">
-    <select
-      v-model="selec"
-      class="block appearance-none w-full bg-gray-100 border border-gray-200 hover:border-gray-300 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-      @click="eventTest(selec)"
+    <label
+      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+      for="grid-state"
     >
-      <option v-if="!options.length" disabled selected>Not found</option>
-      <option v-for="op in props.options" :key="op.name" class="text-gray-700">
-        {{ op.name }}
+      Select the continent
+    </label>
+    <select
+      v-model="selected"
+      :disabled="!options.length"
+      class="block appearance-none disabled:bg-gray-300 w-full bg-gray-100 border border-gray-200 px-4 py-2 pr-8 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline"
+      @change="emitSelectedObject(selected)"
+    >
+      <option v-if="!options.length" selected>Nothing found</option>
+      <option
+        v-for="option in props.options"
+        :key="option.code"
+        :value="option"
+        class="rounded text-gray-700"
+      >
+        {{ option.name }}
       </option>
     </select>
 
@@ -31,9 +43,7 @@
   import { watchEffect } from '@vue/runtime-core'
   import { ref } from 'vue'
 
-  const emit = defineEmits(['teste'])
-
-  const selec = ref('')
+  const emit = defineEmits(['filter:selected'])
 
   const props = defineProps({
     options: {
@@ -41,14 +51,15 @@
     },
   })
 
-  function eventTest(teste) {
-    console.log('teste')
-    emit('teste', teste)
+  const selected = ref({})
+
+  function emitSelectedObject(payload) {
+    emit('filter:selected', payload)
   }
 
-  watchEffect(() => {
-    console.log(props.options)
-  })
+  // watchEffect(() => {
+  //   console.log(props.options)
+  // })
 </script>
 
 <style lang="postcss" scoped></style>
