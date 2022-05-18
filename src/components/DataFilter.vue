@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-  import { computed, ref, watchEffect } from 'vue'
+  import { computed, reactive, ref, watchEffect } from 'vue'
   import { useQuery } from '@vue/apollo-composable'
   import AppSelect from './ui/AppSelect.vue'
   import {
@@ -53,7 +53,6 @@
   const onSubmit = () => {
     emit('filter:submit', continentToFindCountries.value.code)
   }
-
   // watchEffect(() => {
   //   console.log(continents)
   // })
