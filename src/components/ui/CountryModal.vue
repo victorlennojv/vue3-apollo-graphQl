@@ -21,25 +21,43 @@
             v-if="props.country"
             class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
           >
-            <div class="sm:flex sm:items-start">
+            <div class="sm:flex sm:items-start justify-center">
               <div
-                class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-emerald-300 sm:mx-0 sm:h-10 sm:w-10"
-              ></div>
-              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3
-                  id="modal-title"
-                  class="text-lg leading-6 font-medium text-gray-900"
-                >
-                  atastast
-                </h3>
-                <div class="mt-2">
-                  <p class="text-sm text-gray-500">
-                    Are you sure you want to deactivate your account? All of
-                    your data will be permanently removed. This action cannot be
-                    undone.
-                  </p>
-                </div>
+                class="mx-auto flex items-center justify-center h-12 w-12 ring-4 ring-emerald-100 rounded-full sm:mx-0 sm:h-10 sm:w-10"
+              >
+                {{ country.emoji }}
               </div>
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <h3 class="text-xl leading-6 font-medium text-gray-900">
+                  {{ country.name }}
+                </h3>
+                <h3 class="text-sm leading-6 font-medium text-gray-500">
+                  {{ country.capital || '-' }}
+                </h3>
+              </div>
+            </div>
+            <div class="flex">
+              <h5 class="mx-1">
+                Country Phone Code:
+                <span class="text-gray-500">{{ country.phone }}</span>
+              </h5>
+              <h5 class="mx-1">
+                Continent:
+                <span class="text-gray-500">{{ country.continent.name }}</span>
+              </h5>
+              <h5 class="mx-1">
+                Currency:
+                <span class="text-gray-500">{{ country.currency }}</span>
+              </h5>
+              <h5 class="mx-1">
+                Languages:
+                <span
+                  v-for="language in country.languages"
+                  :key="language.code"
+                  class="text-gray-500"
+                  >{{ language.name }} <br
+                /></span>
+              </h5>
             </div>
           </div>
 

@@ -22,7 +22,7 @@
           v-for="country in countries"
           :key="country.name"
           class="flex flex-col items-center p-1 transition-colors duration-200 transform cursor-pointer group hover:bg-blue-600 rounded-xl"
-          @click="fetchCountriesByContinent"
+          @click="fetchCountry(country.code)"
         >
           <img
             class="object-cover w-10 h-10 rounded-full ring-4 ring-gray-300"
@@ -100,7 +100,11 @@
   </section>
   <div>
     <transition name="fade">
-      <CountryModal v-if="showModal" @toggle:modal="toggleModal" />
+      <CountryModal
+        v-if="showModal"
+        :country="selectedCountry"
+        @toggle:modal="toggleModal"
+      />
     </transition>
   </div>
 </template>
@@ -109,10 +113,7 @@
   import CountryModal from './ui/CountryModal.vue'
   import { ref } from 'vue'
   import { useApolloClient } from '@vue/apollo-composable'
-  import { countriesByContinentQuery } from '../queries'
-
-  const { client } = useApolloClient()
-  const emit = defineEmits(['selected:country'])
+  import { countryQuery } from '../queries'
 
   const props = defineProps({
     countries: {
@@ -121,18 +122,22 @@
     },
   })
 
+  const { client } = useApolloClient()
+
   const showModal = ref(false)
+  const selectedCountry = ref({})
 
   const toggleModal = () => {
     showModal.value = !showModal.value
   }
 
-  const fetchCountriesByContinent = async (payload) => {
+  const fetchCountry = async (payload) => {
     try {
       const { data } = await client.query({
-        query: countriesByContinentQuery('"' + payload + '"'),
+        query: countryQuery('"' + payload + '"'),
       })
-      console.log(data)
+      selectedCountry.value = data.country
+      toggleModal()
     } catch (error) {
       console.log(error)
     }
