@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white dark:bg-gray-900 rounded-lg shadow">
+  <section class="bg-white rounded-lg shadow">
     <app-toggle
       class="mt-5"
       label="Countries with 2+ languages"
@@ -8,7 +8,7 @@
 
     <div class="container px-12 py-6 mx-auto flex flex-col items-center">
       <h1
-        class="text-3xl mb-6 font-semibold text-center text-gray-700 capitalize lg:text-4xl dark:text-white"
+        class="text-3xl mb-6 font-semibold text-center text-gray-700 capitalize lg:text-4xl"
       >
         Countries List
       </h1>
@@ -34,7 +34,7 @@
           </div>
 
           <h1
-            class="mt-2 text-1xl font-semibold text-center text-gray-700 capitalize dark:text-white group-hover:text-white"
+            class="mt-2 text-1xl font-semibold text-center text-gray-700 capitalize group-hover:text-white"
           >
             {{ country.name }}
           </h1>
@@ -57,7 +57,7 @@
           </div>
 
           <h1
-            class="mt-2 text-1xl font-semibold text-center text-gray-700 capitalize dark:text-white group-hover:text-white"
+            class="mt-2 text-1xl font-semibold text-center text-gray-700 capitalize group-hover:text-white"
           >
             {{ country.name }}
           </h1>
