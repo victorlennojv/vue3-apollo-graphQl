@@ -1,7 +1,7 @@
 <template>
   <div class="m-2">
     <button
-      class="bg-blue-500 uppercase hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-full text-sm active:bg-blue-600"
+      class="bg-emerald-500 uppercase hover:bg-emerald-400 text-white font-bold py-2 px-4 rounded-full text-sm active:bg-emerald-600"
       @click="emit('button:submit')"
     >
       {{ props.text }}

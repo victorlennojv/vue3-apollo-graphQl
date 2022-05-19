@@ -14,7 +14,7 @@
         />
         <app-select
           class="m-3"
-          label="Filter by languages (WIP)"
+          label="Filter by languages (Not implemented yet)"
           @filter:selected="selectedContinet"
         />
         <app-button
@@ -55,9 +55,6 @@
   const onSubmit = () => {
     emit('filter:submit', continentToFindCountries.value.code)
   }
-  // watchEffect(() => {
-  //   console.log(continents)
-  // })
 </script>
 
 <style lang="postcss" scoped>
