@@ -2,7 +2,6 @@
   import AppLogo from './components/ui/AppLogo.vue'
   import DataFilter from './components/DataFilter.vue'
   import CountriesList from './components/CountriesList.vue'
-  import TesteApp from './components/TesteApp.vue'
 
   import { useApolloClient } from '@vue/apollo-composable'
   import { ref } from 'vue'
@@ -34,7 +33,6 @@
   <div class="center-flex mb-10">
     <CountriesList :countries="countries" />
   </div>
-  <!-- <TesteApp class="center-flex" /> -->
 </template>
 
 <style lang="postcss">

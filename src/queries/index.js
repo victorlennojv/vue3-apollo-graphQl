@@ -20,6 +20,9 @@ const countriesByContinentQuery = (continentCode) => {
           name
           code
           emoji
+          languages {
+            code
+          }
         }
       }
     }

@@ -1,10 +1,10 @@
 <template>
-  <div class="center-flex">
-    <div class="max-w-sm w-full rounded-lg bg-white overflow-hidden shadow-2xl">
-      <div class="px-6 py-4">
-        <div class="font-bold text-xs text-gray-400 mb-2">
-          Filtrar dados de países
-        </div>
+  <div class="flex items-center justify-center">
+    <div
+      class="w-full flex flex-col items-center rounded-lg bg-white overflow-hidden shadow"
+    >
+      <div class="font-bold text-gray-500 m-4 mx-5">Filter countries</div>
+      <div class="px-6 py-4 flex flex-col sm:block">
         <!-- Continents selector -->
         <app-select
           class="m-3"
@@ -14,7 +14,7 @@
         />
         <app-select
           class="m-3"
-          label="Filter by languages"
+          label="Filter by languages (WIP)"
           @filter:selected="selectedContinet"
         />
         <app-button
@@ -23,7 +23,6 @@
           text="Submit Filter"
           @button:submit="onSubmit"
         />
-        <app-toggle label="Countries with 2+ languages" />
       </div>
     </div>
   </div>
@@ -34,7 +33,6 @@
   import { useQuery } from '@vue/apollo-composable'
   import AppSelect from './ui/AppSelect.vue'
   import AppButton from './ui/AppButton.vue'
-  import AppToggle from './ui/AppToggle.vue'
   import { continentsQuery } from '../queries/'
 
   const emit = defineEmits(['filter:submit'])
