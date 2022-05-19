@@ -19,6 +19,10 @@ const countriesByContinentQuery = (continentCode) => {
         countries{
           name
           code
+          emoji
+          languages {
+            code
+          }
         }
       }
     }
@@ -26,7 +30,32 @@ const countriesByContinentQuery = (continentCode) => {
   return query
 }
 
+const countryQuery = (countryCode) => {
+  const query = gql`
+  query {
+    country(code: ${countryCode}) {
+      name
+      native
+      capital
+      emoji
+      emojiU
+      phone
+      continent {
+        code
+        name
+      }
+      currency
+      languages {
+        code
+        name
+      }
+    }
+  }`
+  return query
+}
+
 export {
   continentsQuery,
-  countriesByContinentQuery
+  countriesByContinentQuery,
+  countryQuery
 }
