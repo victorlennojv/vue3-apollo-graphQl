@@ -79,7 +79,7 @@
               </div>
               <div class="mt-1">
                 <div
-                  class="inline-flex items-center bg-white leading-none text-emerald-600 rounded p-2 shadow text-teal text-sm"
+                  class="items-center bg-white leading-none text-emerald-600 rounded p-2 shadow text-teal text-sm"
                 >
                   <span
                     class="inline-flex bg-emerald-500 font-bold text-white rounded h-6 px-3 justify-center items-center"
@@ -89,9 +89,9 @@
                   <span
                     v-for="language in country.languages"
                     :key="language.code"
-                    class="inline-flex px-3"
+                    class="inline-flex px-1 mt-1"
                   >
-                    {{ language.name || '-' }}<br />
+                    {{ '- ' + language.name || '-' }}
                   </span>
                 </div>
               </div>
