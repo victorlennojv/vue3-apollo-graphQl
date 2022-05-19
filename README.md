@@ -10,7 +10,6 @@ Desafio técnico feito utilizando Vue 3 + Vite + TailWind Css + GraphQl (Apollo 
 ```
 
 ## Deploy do projeo feito no Vercel :
-
 ```
-https://desafio-insturct-8h5wimz2i-victorlennojv.vercel.app/
+https://desafio-instruct-ev1jxjsmr-victorlennojv.vercel.app/
 ```
