@@ -16,32 +16,33 @@
       </p>
 
       <div
-        class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4"
+        class="grid grid-cols-2 flex gap-6 mt-2 xl:mt-16 md:grid-cols-4 xl:grid-cols-6"
       >
         <div
           v-for="country in countries"
           :key="country.name"
-          class="flex flex-col items-center p-8 transition-colors duration-200 transform cursor-pointer group hover:bg-blue-600 rounded-xl"
+          class="flex flex-col items-center p-1 transition-colors duration-200 transform cursor-pointer group hover:bg-blue-600 rounded-xl"
+          @click="fetchCountriesByContinent"
         >
           <img
-            class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
+            class="object-cover w-10 h-10 rounded-full ring-4 ring-gray-300"
             :src="`../assets/img/${country.code.toLowerCase()}.png`"
             alt=""
           />
 
           <h1
-            class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white"
+            class="mt-2 text-1xl font-semibold text-center text-gray-700 capitalize dark:text-white group-hover:text-white"
           >
-            Nome do País
+            {{ country.name }}
           </h1>
 
-          <p
-            class="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300"
+          <!-- <p
+            class="mt-1 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300"
           >
             Informação do país
-          </p>
+          </p> -->
 
-          <div class="flex mt-3 -mx-2">
+          <!-- <div class="flex mt-1 -mx-2">
             <a
               href="#"
               class="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
@@ -92,15 +93,26 @@
                 ></path>
               </svg>
             </a>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
   </section>
+  <div>
+    <transition name="fade">
+      <CountryModal v-if="showModal" @toggle:modal="toggleModal" />
+    </transition>
+  </div>
 </template>
 
 <script setup>
+  import CountryModal from './ui/CountryModal.vue'
   import { ref } from 'vue'
+  import { useApolloClient } from '@vue/apollo-composable'
+  import { countriesByContinentQuery } from '../queries'
+
+  const { client } = useApolloClient()
+  const emit = defineEmits(['selected:country'])
 
   const props = defineProps({
     countries: {
@@ -108,6 +120,23 @@
       default: () => [],
     },
   })
+
+  const showModal = ref(false)
+
+  const toggleModal = () => {
+    showModal.value = !showModal.value
+  }
+
+  const fetchCountriesByContinent = async (payload) => {
+    try {
+      const { data } = await client.query({
+        query: countriesByContinentQuery('"' + payload + '"'),
+      })
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="postcss" scoped></style>
