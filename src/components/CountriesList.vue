@@ -37,6 +37,7 @@
             class="mt-2 text-1xl font-semibold text-center text-gray-700 capitalize group-hover:text-white"
           >
             {{ country.name }}
+            <h5 class="text-xs text-gray-200">Click for details</h5>
           </h1>
         </div>
       </div>
@@ -60,6 +61,7 @@
             class="mt-2 text-1xl font-semibold text-center text-gray-700 capitalize group-hover:text-white"
           >
             {{ country.name }}
+            <h5 class="text-xs text-gray-200">Click for details</h5>
           </h1>
         </div>
       </div>
