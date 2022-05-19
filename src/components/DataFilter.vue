@@ -8,17 +8,22 @@
         <!-- Continents selector -->
         <app-select
           class="m-3"
+          label="Filter by continent"
           :options="continents.value"
           @filter:selected="selectedContinet"
         />
-        <div class="m-2">
-          <button
-            class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded-full active:bg-blue-600"
-            @click="onSubmit"
-          >
-            Search
-          </button>
-        </div>
+        <app-select
+          class="m-3"
+          label="Filter by languages"
+          @filter:selected="selectedContinet"
+        />
+        <app-button
+          color="lime"
+          class="text-center"
+          text="Submit Filter"
+          @button:submit="onSubmit"
+        />
+        <app-toggle label="Countries with 2+ languages" />
       </div>
     </div>
   </div>
@@ -28,7 +33,9 @@
   import { computed, ref } from 'vue'
   import { useQuery } from '@vue/apollo-composable'
   import AppSelect from './ui/AppSelect.vue'
-  import { continentsQuery } from '../queries/countries'
+  import AppButton from './ui/AppButton.vue'
+  import AppToggle from './ui/AppToggle.vue'
+  import { continentsQuery } from '../queries/'
 
   const emit = defineEmits(['filter:submit'])
 

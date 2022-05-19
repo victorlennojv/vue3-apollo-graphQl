@@ -105,6 +105,7 @@
   const props = defineProps({
     countries: {
       type: Array,
+      default: () => [],
     },
   })
 </script>

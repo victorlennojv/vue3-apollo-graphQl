@@ -5,7 +5,7 @@
 
   import { useApolloClient } from '@vue/apollo-composable'
   import { ref } from 'vue'
-  import { countriesByContinentQuery } from './queries/countries'
+  import { countriesByContinentQuery } from './queries/'
 
   const { client } = useApolloClient()
 
