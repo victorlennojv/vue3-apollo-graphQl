@@ -1,6 +1,4 @@
-# Desafio Instruct
-
-Desafio técnico feito utilizando Vue 3 + Vite + TailWind Css + GraphQl (Apollo client)
+# Projeto feito utilizando Vue 3 + Vite + TailWind Css + GraphQl (Apollo client)
 
 ## Para rodar
 
